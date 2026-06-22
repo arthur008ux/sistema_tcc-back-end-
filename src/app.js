@@ -15,7 +15,7 @@ const app = express();
 // ======================
 app.use(cors({
     origin: [
-        "https://front-tcc-eight.vercel.app/",
+        "https://tcc-front-liart.vercel.app/",
         "http://localhost:5500"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
