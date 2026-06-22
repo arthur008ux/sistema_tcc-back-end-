@@ -1,4 +1,4 @@
-const CursosRepository = require("../repositories/CursosRepository");
+const CursosRepository = require("../repositories/cursosRepository");
 
 class CursosService {
 
