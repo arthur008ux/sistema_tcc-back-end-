@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // se você usa banco, adapte aqui
-const db = require("../config/db");
+const db = require("../config/database");
 
 router.get("/", async (req, res) => {
     try {
