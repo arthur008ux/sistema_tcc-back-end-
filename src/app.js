@@ -13,14 +13,7 @@ const app = express();
 // ======================
 // CORS
 // ======================
-app.use(cors({
-    origin: [
-        "https://tccc-front-nine.vercel.app/",
-        "http://localhost:5500"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(cors());
 
 // ======================
 // MIDDLEWARE
