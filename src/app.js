@@ -8,7 +8,6 @@ const tccRoutes = require("./routes/tccRoutes");
 const pesquisaRoutes = require("./routes/pesquisaRoutes");
 const cursosRoutes = require("./routes/cursosRoutes");
 
-app.use("/cursos", cursosRoutes);
 
 const app = express();
 
@@ -48,6 +47,7 @@ app.use("/empresas", empresaRoutes);
 app.use("/alunos", alunoRoutes);
 app.use("/tccs", tccRoutes);
 
+app.use("/cursos", cursosRoutes);
 app.use("/uploads", express.static("src/uploads"));
 app.use("/pesquisa", pesquisaRoutes);
 
