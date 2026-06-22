@@ -9,11 +9,7 @@ class PesquisaService {
         const resultado =
             await PesquisaRepository.buscarPorMatricula(matricula);
 
-        if (!resultado) {
-            return null;
-        }
-
-        return resultado;
+        return resultado || null;
     }
 }
 
