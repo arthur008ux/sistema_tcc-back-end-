@@ -6,6 +6,9 @@ const empresaRoutes = require("./routes/empresaRoutes");
 const alunoRoutes = require("./routes/alunoRoutes");
 const tccRoutes = require("./routes/tccRoutes");
 const pesquisaRoutes = require("./routes/pesquisaRoutes");
+const cursosRoutes = require("./routes/cursosRoutes");
+
+app.use("/cursos", cursosRoutes);
 
 const app = express();
 
