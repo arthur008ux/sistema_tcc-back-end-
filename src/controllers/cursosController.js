@@ -1,4 +1,4 @@
-const db = require("../config/db"); // ou o mesmo usado nos outros controllers
+const db = require("../config/database"); // ou o mesmo usado nos outros controllers
 
 const CursosController = {
 
