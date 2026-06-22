@@ -8,12 +8,10 @@ const tccRoutes = require("./routes/tccRoutes");
 const pesquisaRoutes = require("./routes/pesquisaRoutes");
 const cursosRoutes = require("./routes/cursosRoutes");
 
-
 const app = express();
 
-
 // ======================
-// CORS (TEM QUE VIR AQUI)
+// CORS
 // ======================
 app.use(cors({
     origin: [
@@ -24,13 +22,11 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-
 // ======================
 // MIDDLEWARE
 // ======================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 // ======================
 // ROTAS
@@ -46,10 +42,8 @@ app.use(authRoutes);
 app.use("/empresas", empresaRoutes);
 app.use("/alunos", alunoRoutes);
 app.use("/tccs", tccRoutes);
-
 app.use("/cursos", cursosRoutes);
 app.use("/uploads", express.static("src/uploads"));
 app.use("/pesquisa", pesquisaRoutes);
-
 
 module.exports = app;

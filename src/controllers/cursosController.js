@@ -7,9 +7,8 @@ class CursosController {
             const cursos = await CursosService.listar();
             return res.json(cursos);
         } catch (err) {
-            return res.status(500).json({
-                mensagem: "Erro ao buscar cursos"
-            });
+            console.error(err);
+            return res.status(500).json({ mensagem: "Erro ao buscar cursos" });
         }
     }
 
@@ -19,14 +18,11 @@ class CursosController {
 
             await CursosService.criar(nome_curso);
 
-            return res.json({
-                mensagem: "Curso criado com sucesso"
-            });
+            return res.json({ mensagem: "Curso criado com sucesso" });
 
         } catch (err) {
-            return res.status(500).json({
-                mensagem: "Erro ao criar curso"
-            });
+            console.error(err);
+            return res.status(500).json({ mensagem: "Erro ao criar curso" });
         }
     }
 
@@ -34,14 +30,11 @@ class CursosController {
         try {
             await CursosService.deletar(req.params.id);
 
-            return res.json({
-                mensagem: "Curso deletado com sucesso"
-            });
+            return res.json({ mensagem: "Curso deletado com sucesso" });
 
         } catch (err) {
-            return res.status(500).json({
-                mensagem: "Erro ao deletar curso"
-            });
+            console.error(err);
+            return res.status(500).json({ mensagem: "Erro ao deletar curso" });
         }
     }
 }
