@@ -1,3 +1,6 @@
+const PesquisaRepository =
+require("../repositories/PesquisaRepository");
+
 class PesquisaService {
 
     async buscarPorMatricula(matricula) {
@@ -9,7 +12,7 @@ class PesquisaService {
         const resultado =
             await PesquisaRepository.buscarPorMatricula(matricula);
 
-        return resultado || null;
+        return resultado;
     }
 }
 

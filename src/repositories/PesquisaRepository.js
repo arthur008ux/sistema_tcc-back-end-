@@ -13,7 +13,6 @@ class PesquisaRepository {
                 a.email,
 
                 c.nome_curso,
-
                 e.nome_empresa,
 
                 t.id_tcc,
@@ -31,7 +30,7 @@ class PesquisaRepository {
             INNER JOIN empresa e
                 ON a.id_empresa = e.id_empresa
 
-            INNER JOIN tcc t
+            LEFT JOIN tcc t
                 ON a.id_aluno = t.id_aluno
 
             WHERE a.matricula = ?
@@ -39,9 +38,8 @@ class PesquisaRepository {
             [matricula]
         );
 
-        return rows[0];
+        return rows[0] || null;
     }
-
 }
 
 module.exports = new PesquisaRepository();
