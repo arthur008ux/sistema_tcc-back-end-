@@ -1,51 +1,49 @@
-const db = require("../config/database"); // ou o mesmo usado nos outros controllers
+const CursosService = require("../services/CursosService");
 
-const CursosController = {
+class CursosController {
 
     async listar(req, res) {
         try {
-            const [rows] = await db.query("SELECT * FROM cursos");
-            res.json(rows);
+            const cursos = await CursosService.listar();
+            return res.json(cursos);
         } catch (err) {
-            console.error(err);
-            res.status(500).json({ mensagem: "Erro ao buscar cursos" });
+            return res.status(500).json({
+                mensagem: "Erro ao buscar cursos"
+            });
         }
-    },
+    }
 
     async criar(req, res) {
         try {
             const { nome_curso } = req.body;
 
-            await db.query(
-                "INSERT INTO cursos (nome_curso) VALUES (?)",
-                [nome_curso]
-            );
+            await CursosService.criar(nome_curso);
 
-            res.json({ mensagem: "Curso criado com sucesso" });
-
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ mensagem: "Erro ao criar curso" });
-        }
-    },
-
-    async deletar(req, res) {
-        try {
-            const { id } = req.params;
-
-            await db.query(
-                "DELETE FROM cursos WHERE id_curso = ?",
-                [id]
-            );
-
-            res.json({ mensagem: "Curso deletado" });
+            return res.json({
+                mensagem: "Curso criado com sucesso"
+            });
 
         } catch (err) {
-            console.error(err);
-            res.status(500).json({ mensagem: "Erro ao deletar curso" });
+            return res.status(500).json({
+                mensagem: "Erro ao criar curso"
+            });
         }
     }
 
-};
+    async deletar(req, res) {
+        try {
+            await CursosService.deletar(req.params.id);
 
-module.exports = CursosController;
+            return res.json({
+                mensagem: "Curso deletado com sucesso"
+            });
+
+        } catch (err) {
+            return res.status(500).json({
+                mensagem: "Erro ao deletar curso"
+            });
+        }
+    }
+}
+
+module.exports = new CursosController();
