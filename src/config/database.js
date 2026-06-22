@@ -1,10 +1,12 @@
 const mysql = require("mysql2/promise");
+require("dotenv").config();
 
 const pool = mysql.createPool({
-    host: 'sistema_tcc.mySQL.dbaas.com.br',
-    user: 'sistema_tcc',
-    database: 'sistema_tcc',
-    password: 'Ana2024#',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
     waitForConnections: true,
     connectionLimit: 10
 });
